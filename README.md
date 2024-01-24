@@ -1,0 +1,1 @@
+# django_pandas_bug_showcase
