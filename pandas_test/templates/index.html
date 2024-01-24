@@ -1,0 +1,24 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h1> Hello there! </h1>
+        <p>
+            This is a small showcase of the bug within Django and Pandas interaction <br>
+            When using Pandas within Django and causing KeyError, server goes into shutdown without any error massage or console message, and then it needs to be rebooted with runserver command again.<br>
+            Tried using Gunicorn to boot up wsgi instance. When trying to recreate bug and acess the key that doesnt exist, Gunicorn returns: Worker (pid:81310) was sent SIGSEGV!<br>
+        </p>
+        I created several views to showcase this bug:
+        <ul> This views will show basic bihavior without any bugs:
+            <li> view without any DataFrame generation just with KeyError raise: <a href="{%url 'basic_app:test_simple_raise_KeyError' %}">/views/test_simple_raise_KeyError</a></li>
+            <li> basic DataFrame generation, without any errors presented in json format: <a href="{%url 'basic_app:test_show_dataframe' %}">/views/test_show_dataframe</a></li>
+            <li> test with DataFrame generation and KeyError catch with try-exept structure: <a href="{%url 'basic_app:test_catch_KeyError_with_using_pandas' %}">/views/test_catch_KeyError_with_using_pandas</a></li>
+        </ul>
+        <ul> This views will cause bug to shutdown server:
+            <li> bug recreation with DataFrame generation without any KeyError catch: <a href="{%url 'basic_app:recreate_bug' %}">/views/recreate_bug</a></li>
+            <li> bug recreation with DataFrame generation without any KeyError catch, without using .loc attribute of pd.DataFrame: <a href="{%url 'basic_app:recreate_bug' %}">/views/recreate_bug</a></li>
+            <li> bug recreation with DataFrame generation and KeyError catch with try-exept structure, however we raise KeyError after catching it: <a href="{%url 'basic_app:recreate_bug_with_raise_error_after_catching_KeyError' %}">/views/recreate_bug_with_raise_error_after_catching_KeyError</a></li>
+        </ul>
+    </body>
+</html>
