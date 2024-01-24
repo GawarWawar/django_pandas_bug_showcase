@@ -1,7 +1,7 @@
 # django_pandas_bug_showcase
 
 This is a small showcase of the bug within Django and Pandas interaction.
-When using Pandas within Django and causing KeyError, server goes into shutdown without any error massage or console message, and then it needs to be rebooted with runserver command again.
+When using Pandas within Django and causing KeyError, server goes into shutdown without any error message or console message, and then it needs to be rebooted with runserver command again.
 Tried using Gunicorn to boot up wsgi instance. When trying to recreate bug and acess the key that doesnt exist, Gunicorn returns: Worker (pid:81310) was sent SIGSEGV!
   
 I created several views to showcase this bug:
