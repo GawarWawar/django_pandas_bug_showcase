@@ -8,7 +8,13 @@ import random
 
 def test_simple_raise_KeyError (request):
     """
-    Test function to intentionally raises a KeyError without Pandas for error handling testing.
+    Test function that intentionally raises a KeyError without Pandas for error handling testing.
+
+    Parameters:
+    request (HttpRequest): The Django HttpRequest object.
+
+    Raises:
+    KeyError: Always raises a KeyError with the message "Just a random KeyError without Pandas here. Django works fine."
     """
     raise KeyError("Just a random KeyError without Pandas here. Django works fine")
 
@@ -39,6 +45,9 @@ def create_basic_dataframe():
 def test_show_dataframe(request):
     """
     Test function to check if the DataFrame is created successfully without any issues.
+
+    Returns:
+    HttpResponse: An HTTP response containing the DataFrame in JSON format with an indentation of 2.
     """
     df = create_basic_dataframe()
     
@@ -47,6 +56,9 @@ def test_show_dataframe(request):
 def test_catch_KeyError_with_using_pandas(request):
     """
     Test function to catch and handle a KeyError when attempting to access a non-existing column.
+
+    Returns:
+    HttpResponse: An HTTP response containing a message indicating that the KeyError was caught and prevented.
     """
     df = create_basic_dataframe()
     try:
@@ -69,6 +81,9 @@ def recreate_bug_with_raise_error_after_catching_KeyError(request):
 def recreate_bug(request):
     """
     Test function intentionally causing a KeyError by accessing a non-existing column.
+
+    Returns:
+    HttpResponse: An HTTP response containing the DataFrame in JSON format with an indentation of 2.
     """
     df = create_basic_dataframe()
     
@@ -78,7 +93,10 @@ def recreate_bug(request):
 
 def recreate_bug_without_loc(request):
     """
-    Test function intentionally causing a KeyError by accessing a non-existing column.
+    Test function intentionally causing a KeyError by accessing a non-existing column without using .loc.
+
+    Returns:
+    HttpResponse: An HTTP response containing the DataFrame in JSON format with an indentation of 2.
     """
     df = create_basic_dataframe()
     
