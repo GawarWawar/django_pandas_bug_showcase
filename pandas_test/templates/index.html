@@ -17,7 +17,7 @@
         </ul>
         <ul> This views will cause bug to shutdown server:
             <li> bug recreation with DataFrame generation without any KeyError catch: <a href="{%url 'basic_app:recreate_bug' %}">/views/recreate_bug</a></li>
-            <li> bug recreation with DataFrame generation without any KeyError catch, without using .loc attribute of pd.DataFrame: <a href="{%url 'basic_app:recreate_bug' %}">/views/recreate_bug</a></li>
+            <li> bug recreation with DataFrame generation without any KeyError catch, without using .loc attribute of pd.DataFrame: <a href="{%url 'basic_app:recreate_bug_without_loc' %}">/views/recreate_bug_without_loc</a></li>
             <li> bug recreation with DataFrame generation and KeyError catch with try-exept structure, however we raise KeyError after catching it: <a href="{%url 'basic_app:recreate_bug_with_raise_error_after_catching_KeyError' %}">/views/recreate_bug_with_raise_error_after_catching_KeyError</a></li>
         </ul>
     </body>
